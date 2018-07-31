@@ -93,7 +93,7 @@ object CommonAnalyzerFacade : ResolverForModuleFactory() {
                     isReleaseCoroutines: Boolean?
                 ) = multiplatformLanguageSettings
 
-                override fun getTargetPlatform(moduleInfo: ModuleInfo) = TargetPlatformVersion.NoVersion
+                override fun getTargetPlatform(project: Project, moduleInfo: ModuleInfo) = TargetPlatformVersion.NoVersion
             },
             resolverForModuleFactoryByPlatform = { CommonAnalyzerFacade },
             platformParameters = { _ -> CommonAnalysisParameters(metadataPartProviderFactory) }
