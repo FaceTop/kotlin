@@ -35,13 +35,13 @@ class GenerateProgressions(out: PrintWriter) : BuiltInsSourceGenerator(out) {
             LONG -> "0L"
             else -> "0"
         }
-        val checkZero = """if (step == $zero) throw kotlin.IllegalArgumentException("Step must be non-zero")"""
+        val checkZero = """if (step == $zero) throw kotlin.IllegalArgumentException("Step must be non-zero.")"""
 
         val minValue = when (kind) {
             LONG -> "Long.MIN_VALUE"
             else -> "Int.MIN_VALUE"
         }
-        val checkMin = """else if (step == $minValue) throw kotlin.IllegalArgumentException("Step must have an inverse")"""
+        val checkMin = """if (step == $minValue) throw kotlin.IllegalArgumentException("Step must be greater than $minValue otherwise overflow can happen on negation.")"""
 
         val hashCode = "=\n" + when (kind) {
             CHAR ->
