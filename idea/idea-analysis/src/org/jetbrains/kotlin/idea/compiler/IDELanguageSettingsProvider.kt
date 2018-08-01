@@ -76,6 +76,7 @@ object IDELanguageSettingsProvider : LanguageSettingsProvider {
         when (moduleInfo) {
             is ModuleSourceInfo -> moduleInfo.module.targetPlatform?.version ?: TargetPlatformVersion.NoVersion
             is ScriptModuleInfo -> getLanguageSettingsForScripts(project, moduleInfo.scriptDefinition).targetPlatformVersion
+            is ScriptDependenciesInfo.ForFile -> getLanguageSettingsForScripts(project, moduleInfo.scriptDefinition).targetPlatformVersion
             else -> TargetPlatformVersion.NoVersion
         }
 }
