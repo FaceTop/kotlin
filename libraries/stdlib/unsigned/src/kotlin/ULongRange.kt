@@ -51,7 +51,8 @@ internal constructor(
     step: Long
 ) : Iterable<ULong> {
     init {
-        if (step == 0.toLong()) throw kotlin.IllegalArgumentException("Step must be non-zero")
+        if (step == 0.toLong()) throw kotlin.IllegalArgumentException("Step must be non-zero.")
+        if (step == Long.MIN_VALUE) throw kotlin.IllegalArgumentException("Step must be greater than Long.MIN_VALUE otherwise overflow can happen on negation.")
     }
 
     /**

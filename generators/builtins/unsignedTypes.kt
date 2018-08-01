@@ -393,7 +393,8 @@ internal constructor(
     step: $stepType
 ) : Iterable<$elementType> {
     init {
-        if (step == 0.to$stepType()) throw kotlin.IllegalArgumentException("Step must be non-zero")
+        if (step == 0.to$stepType()) throw kotlin.IllegalArgumentException("Step must be non-zero.")
+        if (step == $stepType.MIN_VALUE) throw kotlin.IllegalArgumentException("Step must be greater than $stepType.MIN_VALUE otherwise overflow can happen on negation.")
     }
 
     /**

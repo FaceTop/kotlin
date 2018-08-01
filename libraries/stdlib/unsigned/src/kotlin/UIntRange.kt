@@ -51,7 +51,8 @@ internal constructor(
     step: Int
 ) : Iterable<UInt> {
     init {
-        if (step == 0.toInt()) throw kotlin.IllegalArgumentException("Step must be non-zero")
+        if (step == 0.toInt()) throw kotlin.IllegalArgumentException("Step must be non-zero.")
+        if (step == Int.MIN_VALUE) throw kotlin.IllegalArgumentException("Step must be greater than Int.MIN_VALUE otherwise overflow can happen on negation.")
     }
 
     /**
